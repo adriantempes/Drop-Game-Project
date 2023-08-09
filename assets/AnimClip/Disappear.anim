@@ -1,0 +1,25 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "Disappear",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.2,
+  "sample": 10,
+  "speed": 0.35,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "opacity": [
+        {
+          "frame": 0,
+          "value": 255
+        },
+        {
+          "frame": 0.2,
+          "value": 0
+        }
+      ]
+    }
+  },
+  "events": []
+}
