@@ -13,6 +13,9 @@ export default class CubeComponent extends cc.Component {
 
     @property(cc.Node)
     blockNode: cc.Node = null;
+    @property(cc.Node)
+    block : cc.Node = null;
+    //hello cac ban
 
     @property([cc.SpriteFrame])
     cubeArray: cc.SpriteFrame[] = [];
