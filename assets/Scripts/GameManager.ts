@@ -161,7 +161,6 @@ export default class GameManager extends cc.Component {
                 return;
             }
             console.log("touch start");
-
             this.touchControl = true;
             this.moveTime = 0;
             this.moved = false;
@@ -230,41 +229,12 @@ export default class GameManager extends cc.Component {
                 min = self.columnCurrent;
                 max = self.columnTouchNew;
             }
-
-            // if (self.rowTouchNew > self.rowCurrent) {
-            //     isCanSwapColumn = false;
-            // } else {
-            //
-            // }
             for (var i = min; i <= max; i++) {
                 if (self.block[(this.rowCurrent - 1) * COL + i - 1].num) {
                     isCanSwapColumn = false;
                     break;
                 }
             }
-
-            // if (this.moved)
-            //     return;
-            // var pos = event.getLocation();
-            // var dx = pos.x - this.touchPos.x;
-            // var dy = pos.y - this.touchPos.y;
-            // if (dy < -BASESIZE * 0.5) {
-            //     this.drop();
-            // } else {
-            //     //    --[[1.2.1取消点击最下一行掉落
-            //     // 	if y < display.height * 0.5 - ROW * BASESIZE * 0.5 + BASESIZE  then
-            //     // this.tetris: drop()
-            //     //    else]]
-            //     // }
-            //     // if (this.moveTime < 0.5) {
-            //     //     if (pos.x < this.cx) {
-            //     //         this.move("left");
-            //     //     } else {
-            //     //         this.move("right");
-            //     //     }
-            //     // }
-            //     this.drop();
-            // }
             if (isCanSwapColumn) {
                 self.columnCurrent = self.columnTouchNew;
                 console.log("BINH COLUMN" + self.columnCurrent);
@@ -856,27 +826,6 @@ export default class GameManager extends cc.Component {
         fontNode.setPosition(px + pt.x, py + pt.y, 999);
         fontNode.zIndex = 999;
         fontNode.parent = this.playBoardArea;
-
-        // let a = this
-        // // this.playBoardArea.addChild(this.animCoin);
-        // let test =cc.instantiate(this.animCoin);
-        // test.getComponentInChildren(cc.Label).string = "100";
-        // test.position = this.uiRoot.position.add(cc.v2(-40, -40));
-        // test.zIndex = 999;
-        // test.parent = this.uiRoot;
-        //
-        //
-        // setTimeout(function () {
-        //     a.animCoin.destroy()
-        // }, 5e3)
-        //
-        //     var action = cc.sequence(
-        //             cc.spawn(cc.moveBy(5, cc.v2(10, 10)), cc.fadeOut(0.5)),
-        //             cc.callFunc(function () {
-        //                 a.animCoin.removeFromParent(true);
-        //             })
-        //         );
-        // this.animCoin.runAction(action);
     }
 
     sortAfterMerge(isToolClear?) {
