@@ -52,15 +52,16 @@ export default class NextBoxInfo extends cc.Component {
     }
 
     onNextAds() {
-        let self = this;
-        //Show ads receive item
-        let AVSuccessCb = function (arg) {
-            self.setUnLock();
-        };
-        let AVFailedCb = function (arg) {
-            console.log("Show ads fail nhe");
-        };
-        FBGlobal.instance.showAds(AVSuccessCb.bind(this), AVFailedCb.bind(this), null);
+        // let self = this;
+        // //Show ads receive item
+        // let AVSuccessCb = function (arg) {
+        //     self.setUnLock();
+        // };
+        // let AVFailedCb = function (arg) {
+        //     console.log("Show ads fail nhe");
+        // };
+        // FBGlobal.instance.showAds(AVSuccessCb.bind(this), AVFailedCb.bind(this), null);
+        this.setUnLock();
     }
 
     // onLoad () {}

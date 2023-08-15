@@ -125,9 +125,9 @@ export default class ShopInfo extends cc.Component {
         let _this = this;
         this.btnDailyAds.node.on('click', function () {
             Common.playAudioEffect(AudioEffectID.ClickBtn, false);
-            let AVSuccessCb = function (arg) {
-                console.log("Show ads daily oke nhe");
-                //Show ads callback add coin
+            // let AVSuccessCb = function (arg) {
+            //     console.log("Show ads daily oke nhe");
+            //     //Show ads callback add coin
                 Common.addMoreCoin(1000);
                 let date = _this.getTimeToday();
 
@@ -135,11 +135,11 @@ export default class ShopInfo extends cc.Component {
 
                 let event = new cc.Event.EventCustom(SHOP_EVENT.UPDATE_COIN, true);
                 _this.node.dispatchEvent(event);
-            };
-            let AVFailedCb = function (arg) {
-                console.log("Show ads fail nhe");
-            };
-            FBGlobal.instance.showAds(AVSuccessCb.bind(_this), AVFailedCb.bind(_this), null);
+            // };
+            // let AVFailedCb = function (arg) {
+            //     console.log("Show ads fail nhe");
+            // };
+            // FBGlobal.instance.showAds(AVSuccessCb.bind(_this), AVFailedCb.bind(_this), null);
         }, this);
         this.updateCoin();
     }
@@ -163,18 +163,18 @@ export default class ShopInfo extends cc.Component {
         } else {
             let self = this;
             //Show ads receive item
-            let AVSuccessCb = function (arg) {
-                console.log("Show ads oke nhe");
+            // let AVSuccessCb = function (arg) {
+            //     console.log("Show ads oke nhe");
                 let toolCount = Common.toolBagData[toolType];
                 Common.setToolBagData(toolType, toolCount + 1);
                 let event = new cc.Event.EventCustom(SHOP_EVENT.UPDATE_COIN, true);
                 self.node.dispatchEvent(event);
-            };
-            let AVFailedCb = function (arg) {
-                console.log("Show ads fail nhe");
-            };
-            // Here `this` is referring to the component
-            FBGlobal.instance.showAds(AVSuccessCb.bind(this), AVFailedCb.bind(this), null);
+            // };
+            // let AVFailedCb = function (arg) {
+            //     console.log("Show ads fail nhe");
+            // };
+            // // Here `this` is referring to the component
+            // FBGlobal.instance.showAds(AVSuccessCb.bind(this), AVFailedCb.bind(this), null);
         }
     }
 
@@ -215,6 +215,8 @@ export default class ShopInfo extends cc.Component {
     }
 
     updateCoin() {
+        
+
         this.totalCoin = Common.getTotalCoin();
         this.lblTotalCoin.string = ": " + this.totalCoin;
         let isActive = this.totalCoin >= 100;
