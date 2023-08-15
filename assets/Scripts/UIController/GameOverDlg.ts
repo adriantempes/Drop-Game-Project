@@ -125,19 +125,19 @@ export default class GameOverDlg extends cc.Component {
 
     onBtnReviveAds() {
         let self = this;
-        //Show ads receive item
-        Common.playAudioEffect(AudioEffectID.ClickBtn, false);
+        // //Show ads receive item
+        // Common.playAudioEffect(AudioEffectID.ClickBtn, false);
 
-        let AVSuccessCb = function (arg) {
+        // let AVSuccessCb = function (arg) {
             Common.getDlgMgr().removeDlg(this.node);
             GameManager.instance.reviveGamePlay();
-        };
-        let AVFailedCb = function (arg) {
-            console.log("Show ads fail nhe");
-        };
-        // Here `this` is referring to the component
-        FBGlobal.instance.showAds(AVSuccessCb.bind(this), AVFailedCb.bind(this), null);
-        // let event = new cc.Event.EventCustom(Common.CUSTOM_EVENT.RESTART_GAME, true);
-        // this.node.dispatchEvent(event);
+        // };
+        // let AVFailedCb = function (arg) {
+        //     console.log("Show ads fail nhe");
+        // };
+        // // Here `this` is referring to the component
+        // FBGlobal.instance.showAds(AVSuccessCb.bind(this), AVFailedCb.bind(this), null);
+        // // let event = new cc.Event.EventCustom(Common.CUSTOM_EVENT.RESTART_GAME, true);
+        // // this.node.dispatchEvent(event);
     }
 }

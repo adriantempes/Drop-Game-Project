@@ -1201,7 +1201,7 @@
       "ctor": "Float64Array",
       "array": [
         1.5,
-        -7.408999999999992,
+        -53.579999999999984,
         0,
         0,
         0,
@@ -1271,7 +1271,7 @@
     "_left": 227.5,
     "_right": 0,
     "_top": 0,
-    "_bottom": 491.591,
+    "_bottom": 445.42,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
@@ -1373,7 +1373,7 @@
       "__id__": 2
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 37

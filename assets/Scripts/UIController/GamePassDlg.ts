@@ -100,21 +100,21 @@ export default class GamePassDlg extends cc.Component {
     onX2Coin() {
         var self = this;
         //TODO x2 coin save
-        Common.playAudioEffect(AudioEffectID.ClickBtn, false);
+        // Common.playAudioEffect(AudioEffectID.ClickBtn, false);
 
-        let AVSuccessCb = function (arg) {
+        // let AVSuccessCb = function (arg) {
             self.x2Coin();
             //add anim coin
             self.animCoin.play('X2Coin');
             //grey btn
             self.btnx2Coin.node.color = new cc.Color(95, 95, 95, 255);
             self.btnx2Coin.getComponent(cc.Button).enabled = false;
-        };
-        let AVFailedCb = function (arg) {
-            console.log("Show ads fail nhe");
-        };
-        // Here `this` is referring to the component
-        FBGlobal.instance.showAds(AVSuccessCb.bind(this), AVFailedCb.bind(this), null);
+        // };
+        // let AVFailedCb = function (arg) {
+        //     console.log("Show ads fail nhe");
+        // };
+        // // Here `this` is referring to the component
+        // FBGlobal.instance.showAds(AVSuccessCb.bind(this), AVFailedCb.bind(this), null);
     }
 
     onInviteFriend() {
