@@ -251,7 +251,7 @@ export default class GameManager extends cc.Component {
     }
 
     onUpdateMission() {
-        // @ts-ignore
+            
         this.levelInfo = GlobalData.LevelGame[GlobalData.currentLevel];
         //this.uiMgr.updateMission(this.levelInfo);
         this.uiMission.updateMission(this.levelInfo, this.uiMgr, this);
@@ -755,7 +755,7 @@ export default class GameManager extends cc.Component {
                 console.log("HAHA2")
                 return true;
             } else {
-                Common.gameState = GameState.Run;
+                // Common.gameState = GameState.Run;
                 if (!noDown) {
                     //if (GameData.music) audio.playEffect(res.sdown);
 
@@ -1006,24 +1006,12 @@ export default class GameManager extends cc.Component {
 
         mergeCount[idx] = mergeDatas.length;
         if (mergeCount[idx] == 2) {
-            // if (GameData.music) {
-            //     audio.playEffect(res.smerge1);
-            // }
             Common.playAudioEffect(AudioEffectID.Merge, false);
-
-            //  this.uiMgr.shakeScreen(3);
         } else if (mergeCount[idx] == 3) {
-            // if (GameData.music) {
-            //     audio.playEffect(res.smerge2);
-            // }
             Common.playAudioEffect(AudioEffectID.Merge, false);
         } else {
-            // if (GameData.music) {
-            //     audio.playEffect(res.smerge3);
-            // }
             Common.playAudioEffect(AudioEffectID.Merge, false);
         }
-
         this.comboShakingScreen(this.comboCount);
 
         var _this = this;
@@ -1036,8 +1024,6 @@ export default class GameManager extends cc.Component {
                 block[subIdx].num = 0;
                 (function (subIdx) {
                     action = cc.sequence(
-                        // cc.fadeTo(0.1, 128),
-                        // cc.fadeTo(0.1, 255),
                         cc.moveTo(0.07, _this.getBlockPosition(idx)).easing(cc.easeSineIn()),
                         cc.callFunc(function () {
                             //TODO show anim remove
@@ -1060,8 +1046,6 @@ export default class GameManager extends cc.Component {
                             block[subIdx].pic.removeFromParent(true);
                             block[subIdx] = {num: 0, pic: null};
                             mergeCount[idx] = mergeCount[idx] - 1;
-
-
                             if (PrintTest) {
                                 console.log("mergeIdx:" + idx + " count.." + (mergeCount[idx] + 1) + "->" + mergeCount[idx]);
                             }
@@ -1084,22 +1068,10 @@ export default class GameManager extends cc.Component {
                                 cc.callFunc(function () {
                                     //Ghi điểm
                                     _this.addScore(subIdx, mergeNum);
-
-
-                                    //TODO change level hard 判断等级
-                                    // while (mergeNum > _this.levelNum) {
-                                    //     _this.level = _this.level + 1;
-                                    //     _this.speed = _this.speed * 0.85;
-                                    //     _this.levelNum = _this.levelNum * 2;
-                                    //     //_this.scene.levelLabel.setString("Lv "+_this.level);
-                                    // }
                                 }),
                                 cc.scaleTo(0.03, 1.3),
                                 cc.scaleTo(0.05, 1),
                                 cc.callFunc(function () {
-                                    //block[subIdx].pic.remremoveFromParentAndCleanup(true)
-                                    //block[subIdx].num = mergeNum
-                                    //block[subIdx].pic = this.getNumerSprite(mergeNum,subIdx)
                                     mergeCount[idx] = mergeCount[idx] - 1;
                                     if (PrintTest) {
                                         console.log("mergeIdx:" + idx + " count.." + (mergeCount[idx] + 1) + "->" + mergeCount[idx]);
@@ -1117,7 +1089,6 @@ export default class GameManager extends cc.Component {
             this.comboCount++;
         }
     }
-
     // Thả một số
     sendNumer(nowNum?, nextNum?, first?) {
         if (!this.isBlockingToolRow) {
@@ -1130,7 +1101,6 @@ export default class GameManager extends cc.Component {
     }
 
     getNearbySameNumbers(mergeIdx, idx) {
-        //console.log("getNear.."..idx);
         var mergeDatas = this.mergeNumers[mergeIdx];
         for (var k in mergeDatas) {
             if (mergeDatas[k] == idx) {
@@ -1171,8 +1141,6 @@ export default class GameManager extends cc.Component {
     }
 
     setNowNumPos(x, y, isDrop?, isBreak?) {
-        //this.nowPic.x = x;
-        //this.nowPic.y = y;
         let _this = this;
         var idx = this.idx(x, y);
         this.nowPic.getComponent("CubeComponent").setIdx(idx);
@@ -1180,14 +1148,6 @@ export default class GameManager extends cc.Component {
             //Case drop change to column then drop
             var idxCurrentColumn = this.idx(this.columnCurrent, this.rowCurrent);
             _this.rowCurrent = ROW;
-            // var action = cc.sequence(
-            //     cc.moveTo(0.05,),
-            //     cc.moveTo(0.15,),
-            //     cc.callFunc(function () {
-            //
-            //     })
-            // );
-            // this.nowPic.runAction(action);
             cc.tween(this.nowPic)
                 .to(0.05, {position: this.getBlockPosition(idxCurrentColumn)})
                 .to(0.08, {scale: 1, position: this.getBlockPosition(idx), easing: EasingEnum.cubicIn})
@@ -1238,7 +1198,6 @@ export default class GameManager extends cc.Component {
     }
 
     drop() {
-        // console.log("drop");
         var currentIndex = this.getMovingIndex();
         Common.gameState = GameState.Drop;
         var block = this.block;
@@ -1250,7 +1209,6 @@ export default class GameManager extends cc.Component {
             var idx = this.idx(x, row);
             console.log("BINH idx" + idx + "column: " + x + "row: " + row);
             console.log("BINH num at idx:" + this.block[idx].num);
-
             if (this.block[idx].num != 0) {
                 stopY = row + 1;
                 break;
@@ -1268,7 +1226,6 @@ export default class GameManager extends cc.Component {
                 return;
             }
         }
-
         if (1) {
             this.setNowNumPos(x, stopY, true);
         } else {
@@ -1313,7 +1270,7 @@ export default class GameManager extends cc.Component {
             console.log("HAHA1");
             // @ts-ignore
             if (GlobalData.currentLevel % 2 == 0) {
-                FBGlobal.instance.showAdsInterestial();
+                // FBGlobal.instance.showAdsInterestial();
             }
             return;
         }, 2);
@@ -1326,8 +1283,6 @@ export default class GameManager extends cc.Component {
         let self = this;
 
         this.scheduleOnce(function () {
-            // Here `this` is referring to the component
-            //this.scene.gameOver(); gameOver
             // @ts-ignore
             GlobalData.bonusCoin = 3;
             // @ts-ignore
@@ -1355,7 +1310,6 @@ export default class GameManager extends cc.Component {
             this.block[idx].setNum(v, idx);
         }
     }
-
     getBlockPosition(idx) {
         var pos = this.pos(idx);
         var px = BASESIZE * (pos.x - 0.5) + 90;
@@ -1366,21 +1320,16 @@ export default class GameManager extends cc.Component {
         }
         return cc.v2(px, py);
     }
-
     getMovingIndex() {
         return this.nowPic.getComponent("CubeComponent").getIdx();
     }
-
     onBtnPause() {
-        // let event = new cc.Event.EventCustom(Common.CUSTOM_EVENT.PAUSE_GAME, true);
-        // this.node.dispatchEvent(event);
         this.pauseGamePlay()
         this.uiMgr.showDlg("PauseDlg", cc.v2(0, 100));
     }
 
     onUpdateBonusItem() {
         BottomInfo.instance.onUpdateInfo();
-        // LevelDlg.instance.onUpdateCoin();
         StartScreenManager.instance.onUpdateCoin();
     }
 }
