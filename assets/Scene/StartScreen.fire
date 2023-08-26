@@ -6866,7 +6866,7 @@
       "__id__": 148
     },
     "_name": "LevelDlg",
-    "_active": false,
+    "_active": true,
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
@@ -6917,7 +6917,7 @@
         "__id__": 155
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 282

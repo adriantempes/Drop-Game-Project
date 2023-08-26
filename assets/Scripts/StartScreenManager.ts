@@ -117,7 +117,7 @@ export default class StartScreenManager extends cc.Component {
             }
         });
 
-        //cc.sys.localStorage.setItem('numberTotalCoin', 0);
+        cc.sys.localStorage.setItem('numberTotalCoin', 1000);
         this.btnPlay.node.on('click', this.onBtnPlay, this);
         this.btnTips.node.on('click', this.onBtnTips, this);
         this.btnShop.node.on('click', this.onBtnShop, this);

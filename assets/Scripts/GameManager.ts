@@ -251,7 +251,7 @@ export default class GameManager extends cc.Component {
     }
 
     onUpdateMission() {
-            
+            // @ts-ignore
         this.levelInfo = GlobalData.LevelGame[GlobalData.currentLevel];
         //this.uiMgr.updateMission(this.levelInfo);
         this.uiMission.updateMission(this.levelInfo, this.uiMgr, this);
