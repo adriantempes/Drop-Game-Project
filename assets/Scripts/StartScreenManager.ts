@@ -19,8 +19,8 @@ const ScreenConfig = {
     "Level": 0,
     "Game": 1,
     "Shop": 2,
-    "Rank": 3,
-    "Home": 4,
+    // "Rank": 3,
+    "Home": 3,
 };
 
 @ccclass
@@ -81,7 +81,6 @@ export default class StartScreenManager extends cc.Component {
     }
 
     onLoad() {
-        //cc.sys.localStorage.setItem("numberLevelUnlocked", 1);
         console.log("BINH load main");
 
         FBGlobal.instance.loadVideoAdsFirst();
@@ -89,9 +88,6 @@ export default class StartScreenManager extends cc.Component {
         this.scheduleOnce(() => {
             FBGlobal.instance.loadBannnerAdsFirst();
         }, 0.5)
-
-
-
         StartScreenManager._ins = this;
         Common.playBGM();
 
@@ -116,20 +112,14 @@ export default class StartScreenManager extends cc.Component {
                 LevelDlg._ins.loadData();
             }
         });
-
-        //cc.sys.localStorage.setItem('numberTotalCoin', 0);
         this.btnPlay.node.on('click', this.onBtnPlay, this);
         this.btnTips.node.on('click', this.onBtnTips, this);
         this.btnShop.node.on('click', this.onBtnShop, this);
         this.btnSetting.node.on('click', this.onBtnSound, this);
         this.btnShare.node.on('click', this.onBtnShare, this);
-        this.btnRanking.node.on('click', this.onBtnRanking, this);
+        // this.btnRanking.node.on('click', this.onBtnRanking, this);
         this.onGetLevelText();
-        // cc.director.preloadScene("Level");
-        //  cc.director.preloadScene("Shop");
-
         this.btnSound.spriteFrame = this.m_AudioOnOffLst[!Common.isMusicOn ? 1 : 0];
-
         FBGlobal.instance.subcribeMessage();
     }
 
@@ -171,20 +161,10 @@ export default class StartScreenManager extends cc.Component {
 
     onBtnPlay() {
         Common.playAudioEffect(AudioEffectID.ClickBtn, false);
-        //let pos = cc.v2(0, 0)
-
         this.onShowScreenByName("Level");
-        //Common.getDlgMgr().showDlg(prefab, this.uiRoot, pos);
-        //cc.director.loadScene("Level");
     }
 
     onShowScreenByName(name) {
-        //let pos = cc.v2(0, 0)
-        // let nodeHome = this.screenList[ScreenConfig["Home"]];
-        // let nodeLevel = this.screenList[ScreenConfig["Level"]];
-        // let nodeShop = this.screenList[ScreenConfig["Shop"]];
-        // let nodeGame = this.screenList[ScreenConfig["Game"]];
-
         for (let i = 0; i < Object.keys(ScreenConfig).length; i++) {
             let currentNode = this.screenList[i];
             currentNode.active = i == ScreenConfig[name];
@@ -197,35 +177,17 @@ export default class StartScreenManager extends cc.Component {
         if (name == "Home") {
             GameManager.instance.restartGamePlay();
         }
-
-        // if (name == "Level") {
-        //     nodeHome.active = false;
-        //     nodeShop.active = false;
-        //     nodeLevel.active = true;
-        // } else if (name == "Game") {
-        //     nodeHome.active = false;
-        //     nodeShop.active = false;
-        //     nodeLevel.active = false;
-        // } else if (name == "Shop") {
-        //     nodeHome.active = false;
-        //     nodeGame.active = false;
-        //     nodeShop.active = true;
-        // } else if (name == "Home") {
-        //     nodeHome.active = true;
-        // }
     }
 
     onBtnShop() {
         Common.playAudioEffect(AudioEffectID.ClickBtn, false);
         this.onShowScreenByName("Shop");
-        //cc.director.loadScene("Shop");
     }
 
-    onBtnRanking() {
-        Common.playAudioEffect(AudioEffectID.ClickBtn, false);
-        this.onShowScreenByName("Rank");
-        //cc.director.loadScene("Rank");
-    }
+    // onBtnRanking() {
+    //     Common.playAudioEffect(AudioEffectID.ClickBtn, false);
+    //     this.onShowScreenByName("Rank");
+    // }
 
     onBtnSound() {
         Common.isMusicOn = !Common.isMusicOn;
