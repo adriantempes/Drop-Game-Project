@@ -735,19 +735,17 @@ export default class GameManager extends cc.Component {
         //console.log(idxes);
         var mergeNumers = this.mergeNumers = [];
         this.mergeCount = []
-        var needMerge = this.needMerge = []; //需要合成的点
+        var needMerge = this.needMerge = [];
         for (var i = 0; i < idxes.length; i++) {
             var idx = idxes[i];
             if (this.block[idx].num != 0) {
-                mergeNumers[idx] = []; //检查点上的相邻相同数
+                mergeNumers[idx] = []; 
                 this.getNearbySameNumbers(idx, idx);
-                //console.log(this.mergeNumers[idx]);
                 if (mergeNumers[idx].length >= 2) {
                     needMerge.push(idx);
                 }
             }
         }
-
         //Kết thúc mà không hợp nhất. Điểm kết thúc duy nhất.
         var needMergeCount = needMerge.length;
         if (needMergeCount == 0) {
@@ -755,10 +753,7 @@ export default class GameManager extends cc.Component {
                 console.log("HAHA2")
                 return true;
             } else {
-                // Common.gameState = GameState.Run;
                 if (!noDown) {
-                    //if (GameData.music) audio.playEffect(res.sdown);
-
                 }
                 if (!this.isBlockingToolRow) {
                     this.comboCount = 0;
