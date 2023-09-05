@@ -826,13 +826,11 @@ export default class GameManager extends cc.Component {
     sortAfterMerge(isToolClear?) {
         var block = this.block;
         var needMerge = this.needMerge;
-
         if (!this.needMerge) return;
-        //console.log("sortAfterMerge");
         var downNumbers = this.downNumbers = [];
         for (var col = 1; col <= COL; col++) {
             var blank = false;
-            //Binh change from row <= Row to Row
+            //Huu change from row <= Row to Row
             for (var row = 1; row <= ROW; row++) {
                 var idx = this.idx(col, row);
                 //99 is stone
@@ -846,7 +844,7 @@ export default class GameManager extends cc.Component {
                 }
             }
         }
-        //Điểm tổng hợp có thể không cần bỏ, bạn phải kiểm tra lại điểm tổng hợp
+        //Điểm tổng hợp có thể không cần bỏ, phải kiểm tra lại điểm tổng hợp
         var addCheckNumbers = [];
         for (var i = 0; i < needMerge.length; i++) {
             var has = false;
@@ -860,8 +858,6 @@ export default class GameManager extends cc.Component {
                 addCheckNumbers.push(needMerge[i]);
             }
         }
-
-        //没有掉落，但还得检查之前的合成点
         var downNumbersCount = downNumbers.length;
         if (downNumbersCount == 0) {
             this.checkMerge(addCheckNumbers, true)
@@ -876,7 +872,6 @@ export default class GameManager extends cc.Component {
             if (idx > this.maxIdxCheck) {
                 this.maxIdxCheck = idx;
             }
-
             //Không roi, nhưng bạn phải kiểm tra điểm tổng hợp trước đó
             //Need check down meet stone cant down more
             var isChecked = false;
@@ -920,7 +915,6 @@ export default class GameManager extends cc.Component {
                 ));
             block[downIdx].pic.runAction(action);
         }
-        //console.log(downNumbers);
     }
 
     checkMission(mergeNumber?) {
